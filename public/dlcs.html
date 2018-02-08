@@ -1,0 +1,197 @@
+<!doctype html>
+<html >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Aglive Admin Dashboard Template</title>
+
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="js/jquery.js"></script>
+
+
+
+</head>
+<body class="sidebar-push  sticky-footer">
+
+	<nav class="navbar navbar-default navbar-fixed-top" ng-include="'nav-bar.html'">
+
+</nav>
+	<!-- // Navbar -->
+
+
+	<!-- Sidebar Left -->
+	<div class="sidebar left-side sidebar-mini" id="sidebar-left" ng-include="'sidebar-left.html'">
+
+	</div>
+	<!-- // Sidebar -->
+	<!-- Sidebar Right -->
+	<div class="sidebar right-side" id="sidebar-right" ng-include="'sidebar-right.html'">
+	<!-- Wrapper Reqired by Nicescroll -->
+
+	</div>
+	<!-- // Sidebar -->
+
+
+
+  <div class="container-fluid">
+
+		<div id="main">
+		<div class="page-header">
+		  <h1>DLCs List</h1>
+		</div>
+		<div class="panel panel-default panel-shadow" >
+			<div class="panel-body" >
+					<!-- <form  class="filter form-inline" ng-controller="dlcsCtrl"> -->
+						<form  class="filter form-inline">
+							<div class="filter-options">
+									<div class="form-group">
+											<label for="followers-select">Search By:</label>
+											<select ng-model="dlcs.searchby"   class="followers-select form-control">
+													<option value="0">Any</option>
+													<option value="date">Search By Date Range</option>
+													<option value="sourcePIC">Search by Source PIC</option>
+													<option value="destinationPIC">Search by Destination PIC</option>
+													<option value="driverName">Search by Driver</option>
+													<option value="breedID">Search by Breed</option>
+													<option value="referenceNumber">Search by Reference Number</option>
+
+											</select>
+									</div>
+									<div class="form-group" ng-if="myDropDown == 'date'">
+
+												<label for="exampleInputEmail1">From Date</label>
+												<input type="date" class="form-control" ng-model="dlcs.from_date"  placeholder="Start Date">
+
+									</div>
+
+									<div class="form-group" ng-if="dlcs.searchby == 'date'">
+										<label for="exampleInputEmail1">To Date</label>
+										<input type="date" class="form-control" ng-model="dlcs.to_date"  placeholder="End Date">
+
+									</div>
+
+									<div class="form-group" ng-if="dlcs.searchby == 'sourcePIC'">
+										<label for="exampleInputEmail1">Source PIC</label>
+										<input type="text" class="form-control"  ng-model="dlcs.sourcepicnumber"   placeholder="Enter Source PIC"/>
+
+									</div>
+
+									<div class="form-group" ng-if="dlcs.searchby == 'destinationPIC'">
+										<label for="exampleInputEmail1">Destination PIC</label>
+										<input type="text" class="form-control" ng-model="dlcs.destinationpic"  placeholder="Enter Destination PIC">
+
+									</div>
+
+									<div class="form-group" ng-if="dlcs.searchby == 'driverName'">
+										<label for="exampleInputEmail1">Driver Name</label>
+										<input type="text" class="form-control" ng-model="dlcs.drivername" placeholder="Enter Driver Name">
+
+									</div>
+									 <div class="form-group" ng-if="dlcs.searchby == 'breedID'">
+											<label for="college-select">Select Breed Name:</label>
+											<select name="college-select" id="college-select" ng-model ="dlcs.breedid"  class="college-select form-control">
+													<option value="0">Any</option>
+													<option  ng-repeat="breed in breeds" value="{{breed.breedID}}">{{breed.breedName}}</option>
+
+											</select>
+									</div>
+									 <div class="form-group" ng-if="dlcs.searchby == 'referenceNumber'">
+											<label for="from-select">Select Reference Type:</label>
+											<select name="college-select" id="college-select" ng-model ="dlcs.referencenumber"  class="college-select form-control">
+													<option value="agliveNumber">AGLIVE Number</option>
+													<option value="consignmentNumber">Consignment Number</option>
+													<option value="serialNumber">Serial Number </option>
+													<option value="nlisMovementReferenceNumber">NLIS Movement Number</option>
+											</select>
+
+									</div>
+									<div class="form-group" ng-if="dlcs.searchby == 'referenceNumber'">
+										<label for="exampleInputEmail1">Reference Number:</label>
+										<input type="text" class="form-control" ng-model="dlcs.refnumber"  placeholder="Enter Reference Number">
+
+									</div>
+									<div class="form-group pull-right">
+											<button class="btn btn-default-dark bold" ng-click="submit(dlcs)" type="button">Search</button>
+									</div>
+							</div>
+					</form>
+			</div>
+		</div>
+		<div class="table-responsive">
+		  <table class="table">
+		      <thead>
+		      <tr class="text-uppercase">
+						<th class="text-center">Date</th>
+		          <th class="text-center">Aglive Reference No.</th>
+		          <th class="text-center">Status</th>
+		            <th class="text-center"> Consignment Number</th>
+		              <th class="text-center"> Serial Number</th>
+									 <th class="text-center"> Driver Name</th>
+		              <th class="text-center"> Document</th>
+               <th class="text-center"> DLC Location</th>
+		      </tr>
+		      </thead>
+		      <tbody >
+		      <tr ng-repeat="dls in dlsc">
+						 <td class=" text-uppercase text-center">{{dls.dlcSystemDate}}</td>
+		          <td class=" text-uppercase text-center">{{dls.agliveReferenceNumber}}</td>
+		          <td class=" text-uppercase text-center">{{dls.dlcStatus}}</td>
+		                <td class=" text-uppercase text-center">{{dls.LPAConsignmentNumber}}</td>
+		                  <td class=" text-uppercase text-center">{{dls.LPASerialNumber}}</td>
+											<td class=" text-uppercase text-center">{{dls.transportation_driverName}}</td>
+		          <td class="text-center"><a target="_blank" href="{{dls.dlcS3Path}}" class="text-regular"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+<td class=" text-uppercase text-center"><i class="fa fa-file-location-o" aria-hidden="true"></i></td>
+
+		      </tr>
+
+		      </tbody>
+
+					<tbody ng-show="showpicdata">
+					<tr ng-repeat="dls in dlscsourcepicnumber">
+						 <td class=" text-uppercase text-center">{{dls.dlcSystemDate}}</td>
+							<td class=" text-uppercase text-center">{{dls.agliveReferenceNumber}}</td>
+							<td class=" text-uppercase text-center">{{dls.dlcStatus}}</td>
+										<td class=" text-uppercase text-center">{{dls.LPAConsignmentNumber}}</td>
+											<td class=" text-uppercase text-center">{{dls.LPASerialNumber}}</td>
+											<td class=" text-uppercase text-center">{{dls.transportation_driverName}}</td>
+							<td class="text-center"><a target="_blank" href="{{dls.dlcS3Path}}" class="text-regular"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+<td class=" text-uppercase text-center"><i class="fa fa-file-location-o" aria-hidden="true"></i></td>
+
+					</tr>
+
+					</tbody>
+		      <tfoot>
+		      <tr>
+		          <td colspan="8" class="text-right">
+		              <ul class="pagination">
+		                  <li class="active"><a href="#">1</a></li>
+		                  <li><a href="#">2</a></li>
+		                  <li><a href="#">3</a></li>
+		                  <li><a href="#">4</a></li>
+		              </ul>
+		          </td>
+		      </tr>
+		      </tfoot>
+		  </table>
+		</div>
+		</div>
+
+		<div class="footer" ng-include="'aglive-footer.html'">
+
+</div>
+  </div>
+  <div class="overlay-disabled"></div>
+
+
+  <!-- Plugins -->
+  <script src="js/plugins.min.js"></script>
+
+
+  <!-- App Scripts -->
+  <script src="js/scripts.js"></script>
+
+</body>
+</html>

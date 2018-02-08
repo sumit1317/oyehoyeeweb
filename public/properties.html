@@ -1,0 +1,120 @@
+<!doctype html>
+<html >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Aglive Admin Dashboard Template</title>
+
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="js/jquery.js"></script>
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body class="sidebar-push  sticky-footer">
+
+	<nav class="navbar navbar-default navbar-fixed-top" ng-include="'nav-bar.html'">
+
+</nav>
+	<!-- // Navbar -->
+
+
+	<!-- Sidebar Left -->
+	<div class="sidebar left-side sidebar-mini" id="sidebar-left" ng-include="'sidebar-left.html'">
+
+	</div>
+	<!-- // Sidebar -->
+	<!-- Sidebar Right -->
+	<div class="sidebar right-side" id="sidebar-right" ng-include="'sidebar-right.html'">
+	<!-- Wrapper Reqired by Nicescroll -->
+
+	</div>
+	<!-- // Sidebar -->
+
+
+  <div class="container-fluid">
+
+		<div id="main">
+		<div class="page-header">
+		  <h1>Property List </h1>
+		</div>
+
+		<div class="table-responsive">
+		  <table class="table">
+		      <thead>
+		      <tr class="text-uppercase">
+
+		          <th class="text-center">PIC</th>
+		          <th>Property Name</th>
+							 <th class="text-center">Property Address</th>
+		          <th class="text-center">Property Type</th>
+		          <th>Company Name</th>
+
+ 							<th class="text-center">Bobby Calves</th>
+		          <th class="text-center">Location</th>
+							<th class="text-center">Add Bobby Calves</th>
+		      </tr>
+		      </thead>
+		      <tbody ng-controller="propertiesCtrl">
+		      <tr  ng-repeat="prop in property">
+		          <td class="text-muted text-uppercase text-center">{{prop.nlsRegisteredpicNumber}}</td>
+		          <td class="text-center">{{prop.propertyName}} </td>
+			 <td class="text-center">{{prop.addressLine1}},{{prop.addressLine2}},{{prop.suburbName}} ,{{prop.postCode}},{{prop.state}} </td>
+
+		          <td class="text-center">{{prop.typeName}} </td>
+
+		          <td class="text-center"> {{prop.companyName}} </td>
+	<td class="text-center">{{prop.numberOfBobbyCalves}}</td>
+	<td class="text-center"><i class="md md-location-on" ng-click="showmap()"></i>
+<input type="hidden" name="latitude" ng-model="prop.latitude"/><input type="hidden" name="longitude" ng-value="prop.longitude"/>
+
+	</td>
+<td class="text-center" >
+	<form>
+                  <input type="number" value="0" ng-model="prop.bobbynumber" style="width: 50px;"/>
+									   <input type="hidden"  ng-model="prop.picID"/>
+								<span >
+									<button class="btn btn-primary" ng-click="submit(prop)"  type="button">Save</button>
+								  </span>
+</form>
+							</td>
+		      </tr>
+
+		      </tbody>
+		      <tfoot>
+		      <tr>
+		          <td colspan="8" class="text-right">
+		              <ul class="pagination">
+		                  <li class="active"><a href="#">1</a></li>
+		                  <li><a href="#">2</a></li>
+		                  <li><a href="#">3</a></li>
+		                  <li><a href="#">4</a></li>
+		              </ul>
+		          </td>
+		      </tr>
+		      </tfoot>
+		  </table>
+		</div>
+		</div>
+
+		<div class="footer" ng-include="'aglive-footer.html'">
+
+		</div>
+  </div>
+  <div class="overlay-disabled"></div>
+
+
+  <!-- Plugins -->
+  <script src="js/plugins.min.js"></script>
+
+
+</body>
+</html>

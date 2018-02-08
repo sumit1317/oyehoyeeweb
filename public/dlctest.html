@@ -1,0 +1,69 @@
+<div class="container-fluid">
+
+  <div id="main">
+  <div class="page-header">
+    <h1>Property List </h1>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr class="text-uppercase">
+
+            <th class="text-center">PIC</th>
+            <th>Property Name</th>
+             <th class="text-center">Property Address</th>
+            <th class="text-center">Property Type</th>
+            <th>Company Name</th>
+
+            <th class="text-center">Bobby Calves</th>
+            <th class="text-center">Location</th>
+            <th class="text-center">Add Bobby Calves</th>
+        </tr>
+        </thead>
+        <tbody ng-controller="propertiesCtrl">
+        <tr  ng-repeat="prop in property">
+            <td class="text-muted text-uppercase text-center">{{prop.nlsRegisteredpicNumber}}</td>
+            <td class="text-center">{{prop.propertyName}} </td>
+     <td class="text-center">{{prop.addressLine1}},{{prop.addressLine2}},{{prop.suburbName}} ,{{prop.postCode}},{{prop.state}} </td>
+
+            <td class="text-center">{{prop.typeName}} </td>
+
+            <td class="text-center"> {{prop.companyName}} </td>
+<td class="text-center">{{prop.numberOfBobbyCalves}}</td>
+<td class="text-center"><i class="md md-location-on" ng-click="showmap()"></i>
+<input type="hidden" name="latitude" ng-model="prop.latitude"/><input type="hidden" name="longitude" ng-value="prop.longitude"/>
+
+</td>
+<td class="text-center" >
+<form>
+                <input type="number" value="0" ng-model="bobbynumber" style="width: 50px;"/>
+                   <input type="hidden"  ng-model="prop.picID"/>
+              <span >
+                <button class="btn btn-primary" ng-click="submit()"  type="button">Save</button>
+                </span>
+</form>
+            </td>
+        </tr>
+
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="8" class="text-right">
+                <ul class="pagination">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                </ul>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+  </div>
+  </div>
+
+  <div class="footer" ng-include="'aglive-footer.html'">
+
+  </div>
+</div>

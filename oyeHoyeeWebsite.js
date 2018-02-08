@@ -59,8 +59,8 @@ const express       = require('express'),
       });
       app.use(morgan('combined', {stream: accessLogStream}));
       //cheersking apis
-      var bobbyCalvesAdminRoutes = require('./api/routes');
-      app.use('/api', bobbyCalvesAdminRoutes);
+      var oyehoyeewebRoutes = require('./api/routes');
+      app.use('/api', oyehoyeewebRoutes);
       server.listen(config.get("port"));
       console.log("Listening on port"+config.get("port"));
   }

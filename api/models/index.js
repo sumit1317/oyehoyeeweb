@@ -29,7 +29,7 @@ class bobbyCalvesAdmin {
         let categoryid = parseInt(obj.categoryID,10);
         let res = {};
         var videos = _this.mongo.collection("videos");
-        videos.find({"categoryID" : categoryid }).sort({"publishDate": -1}).toArray((err, row) => {
+        videos.find({"categoryID" : categoryid , "status":1 }).sort({"publishDate": -1}).toArray((err, row) => {
             if(err) {
                 resolve(err);
             }

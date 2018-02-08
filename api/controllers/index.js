@@ -1,6 +1,6 @@
 'use strict';
 
-let bobbyCalvesAdmin  = require('../models');
+let oyehoyeeweb  = require('../models');
 let jwt = require('../config/jwt.js');
 let ag    = new oyehoyeeweb();
 

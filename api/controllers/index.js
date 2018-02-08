@@ -1,8 +1,8 @@
 'use strict';
 
-let oyehoyeeweb  = require('../models');
+let ABC  = require('../models');
 let jwt = require('../config/jwt.js');
-let ag    = new oyehoyeeweb();
+let ag    = new ABC();
 
 let getToken = (req,res) => {
   let obj = req.body;
@@ -13,7 +13,6 @@ let getToken = (req,res) => {
           res.json(dt);
       });
 }
-
 
 let getVideos = (req,res) => {
   //first check for token validity, then check for payload content
@@ -50,9 +49,6 @@ let getVideoCategories = (req,res) => {
     res.json(err);
   })
 }
-
-
-
 
 
 module.exports = {

@@ -4,7 +4,7 @@ const config        = require('config');
 const http = require("https");
 //var mongo   = require('../config/db_config.js').mongoConnect();
 //var jwt = require('../config/jwt.js');
-class oyehoyeeweb {
+class ABC {
 
     constructor() {
     //  this.db     = require('../config/db_config.js').localConnect();
@@ -104,5 +104,5 @@ class oyehoyeeweb {
       });
     }
 
-}
-module.exports = oyehoyeeweb;
+} //class ends
+module.exports = ABC;

@@ -3,7 +3,7 @@ const config        = require('config');
 const http = require("https");
 //var mongo   = require('../config/db_config.js').mongoConnect();
 //var jwt = require('../config/jwt.js');
-class bobbyCalvesAdmin {
+class oyehoyeeweb {
 
     constructor() {
     //  this.db     = require('../config/db_config.js').localConnect();

@@ -2,7 +2,7 @@
 
 let bobbyCalvesAdmin  = require('../models');
 let jwt = require('../config/jwt.js');
-let ag    = new bobbyCalvesAdmin();
+let ag    = new oyehoyeeweb();
 
 let getVideos = (req,res) => {
   let obj = req.body;
